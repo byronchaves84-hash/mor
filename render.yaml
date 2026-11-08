@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: moorttys-voice-pwa
+    runtime: docker
+    plan: starter
+    healthCheckPath: /api/auth-required
+    disk:
+      name: moorttys-data
+      mountPath: /app/data
+      sizeGB: 1
+    envVars:
+      - key: APP_PASSWORD
+        sync: false
+      - key: MOORTTYS_DATA_DIR
+        value: /app/data
